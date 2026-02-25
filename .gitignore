@@ -1,0 +1,30 @@
+makefile
+
+# MuJoCo/Simulation Files
+*.log
+*.mjb
+*_frames/
+*.mp4
+*.png
+# Often used in RL/simulation
+**/results/
+**/videos/
+
+# Python/Virtual Environment
+__pycache__/
+*.py[cod]
+venv/
+.env
+.venv
+env/
+conda-env/
+
+# IDE/Editor (VS Code)
+.vscode/
+.idea/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+
+
