@@ -78,7 +78,7 @@
 
     <!-- Rangefinder -->
     <sensor>
-        <rangefinder name ="zedm_perspective" camera="perspective" data = "dist point normal"/>
+        <rangefinder name ="zedm_perspective" camera="perspective" data = "dist point normal depth"/>
     </sensor>
 
 </mujoco>
