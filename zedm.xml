@@ -58,6 +58,7 @@
                 <geom type="mesh" euler = "90 0 -20" mesh="zedm_mesh" group="4"/>
                 <camera name="perspective" euler="0 -60 0" resolution="4 4" fovy="60" output = "depth" mode = "fixed"
                     projection = "perspective"/>
+                <site name = "zedm_site"  size="0.005"  type = "sphere"/>
                 <!-- <camera name="zedm_lens" pos="0 0 0" mode = "fixed" output = "depth"/> -->
             </body>
         </body>
@@ -76,9 +77,11 @@
         <motor name="right_drive_front" joint="right_motor_front_joint"/>
     </actuator>
 
-    <!-- Rangefinder -->
+    <!-- Sensors -->
     <sensor>
         <rangefinder name ="zedm_perspective" camera="perspective" data = "dist point normal depth"/>
+        <gyro name = "zedm_gyro" site = "zedm_site"/>
+        <accelerometer name = "zedm_accel" site = "zedm_site"/>
     </sensor>
 
 </mujoco>
