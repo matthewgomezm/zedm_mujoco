@@ -1,7 +1,7 @@
 makefile
 *.txt
 *.csv
-.local.md
+*.local.md
 # MuJoCo/Simulation Files
 *.log
 *.mjb
