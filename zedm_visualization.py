@@ -15,18 +15,18 @@ class ZedSim:
         fovy = float(self.model.cam_fovy[cam_id])
         width, height = self.model.cam_resolution[cam_id]
         return {"fovy_deg": fovy, "width": int(width), "height": int(height)}
-
+ 
     def get_sensor_data(self, sensor_name):
         sensor_id = self.model.sensor(sensor_name).id
         sensor_adr = self.model.sensor_adr[sensor_id]
         sensor_dim = self.model.sensor_dim[sensor_id]
         return self.data.sensordata[sensor_adr : sensor_adr + sensor_dim].copy()
 
-    # def control(self, speed):
-      #  self.data.ctrl[0] = speed # left_drive_back
-      # self.data.ctrl[1] = speed # right_drive_back
-      #  self.data.ctrl[2] = speed # left_drive_front
-      #  self.data.ctrl[3] = speed # right_drive_front
+    def control(self, left_speed, right_speed):
+        self.data.ctrl[0] = left_speed   # left_drive_back
+        self.data.ctrl[1] = right_speed  # right_drive_back
+        self.data.ctrl[2] = left_speed   # left_drive_front
+        self.data.ctrl[3] = right_speed  # right_drive_front
 
 
 def save_to_csv(raw_data, filename, columns):
@@ -54,11 +54,16 @@ gyro_data = []
 accel_data = []
 MOD_RATE = 100
 
-zed = ZedSim("zedm.xml")
+#zed = ZedSim("zedm.xml")
+## when rough xml is used:
+zed = ZedSim("zedm_rough.xml")
 step = 0
 
 with mv.launch_passive(zed.model, zed.data) as viewer:
     while viewer.is_running():
+        #zed.control(0.5, 0.1)
+        ## when rough xml is used:
+        zed.control(0.25, 0.25)
         mujoco.mj_step(zed.model, zed.data)
         viewer.sync()
 

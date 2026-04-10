@@ -17,19 +17,20 @@ valid_mask = (depth > 0) & (depth <= 10.0)
 valid_points = points_array[valid_mask]
 valid_depths = depth[valid_mask]
 
-point_cloud = pv.PolyData(valid_points)
+if len(valid_points) > 0:
+    point_cloud = pv.PolyData(valid_points)
 
-plotter = pv.Plotter(title="Rover 3D Vision")
-
-plotter.add_mesh(point_cloud, 
-                 scalars=valid_depths,       
-                 cmap="viridis",             
-                 point_size=15.0,           
-                 render_points_as_spheres=True)
-
-plotter.show_grid()
-plotter.add_axes()
-plotter.show()
+    plotter = pv.Plotter(title="3D Vision")
+    plotter.add_mesh(point_cloud,
+                     scalars=valid_depths,
+                     cmap="viridis",
+                     point_size=15.0,
+                     render_points_as_spheres=True)
+    plotter.show_grid()
+    plotter.add_axes()
+    plotter.show()
+else:
+    print("no values allowed")
 
 
 ## imu plotting below

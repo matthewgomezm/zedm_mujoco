@@ -1,7 +1,7 @@
 makefile
 *.txt
 *.csv
-*.local.md
+*.md
 # MuJoCo/Simulation Files
 *.log
 *.mjb
@@ -20,7 +20,7 @@ venv/
 .venv
 env/
 conda-env/
-
+test.py
 # IDE/Editor (VS Code)
 .vscode/
 .idea/
